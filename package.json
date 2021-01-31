@@ -1,0 +1,23 @@
+{
+  "name": "nodehttp",
+  "version": "1.0.0",
+  "description": "learning http",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JahedHossenBangladesh/Nodehttp.git"
+  },
+  "author": "Jahed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JahedHossenBangladesh/Nodehttp/issues"
+  },
+  "homepage": "https://github.com/JahedHossenBangladesh/Nodehttp#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
