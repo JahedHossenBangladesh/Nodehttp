@@ -7,15 +7,39 @@ const todos = [
 const server = http.createServer((req, res) => {
   //   const { headers, url, method } = req;
   //   console.log(headers, url, method);
-  res.setHeader("Content-type", "application/json");
-  res.setHeader("X-powerd-by", "node.js");
+  // res.statusCode = 400;
+  // res.setHeader("Content-type", "application/json");
+  // res.setHeader("X-powerd-by", "node.js");
 
-  res.end(
-    JSON.stringify({
-      success: true,
-      data: todos,
+  const { method, url } = req;
+
+  let body = [];
+
+  req
+    .on("data", (chunk) => {
+      body.push(chunk);
     })
-  );
+    .on("end", () => {
+      body = Buffer.concat(body).toString();
+
+      let status = 400;
+      const response = {
+        success: false,
+        data: null,
+      };
+
+      if (method === "GET" && url === "") {
+        status = 200;
+        response.success = true;
+        response.data = todos;
+      }
+
+      res.writeHeader(status, {
+        "Content-Type": "application/json",
+        "X-powerd-by": "node.js",
+      });
+      res.end(JSON.stringify(response));
+    });
 });
 const PORT = 5000;
 
