@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
         data: null,
       };
 
-      if (method === "GET" && url === "") {
+      if (method === "GET" && url === "/todos") {
         status = 200;
         response.success = true;
         response.data = todos;
